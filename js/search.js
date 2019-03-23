@@ -29,10 +29,7 @@ function listJobs(data){
 	});
 }
 
-function search(){
-	var key = encodeURI($("[name='search_key']").val());
-	window.location = "search.html?s="+key;
-}
 $(document).ready(function(){
-	getTopJobOffers("","")
+	var key = GetURLParameter("s");
+	getTopJobOffers(key,"");
 });

@@ -1,7 +1,7 @@
 $(document).on('ready',function(){
     "use strict";
 
-    
+
     /* =============== Ajax Contact Form ===================== */
     $('#contactform').submit(function(){
         var action = $(this).attr('action');
@@ -27,10 +27,10 @@ $(document).on('ready',function(){
         );
         });
         return false;
-    });  
+    });
 
-    /*** FIXED Menu APPEARS ON SCROLL DOWN ***/ 
-    $(window).on('scroll', function(){    
+    /*** FIXED Menu APPEARS ON SCROLL DOWN ***/
+    $(window).on('scroll', function(){
         var scroll = $(window).scrollTop();
         if (scroll >= 50) {
         $(".forsticky").addClass("sticky");
@@ -39,7 +39,7 @@ $(document).on('ready',function(){
         $(".forsticky").removeClass("sticky");
         $(".forsticky").addClass("");
         }
-    });  
+    });
 
     /* Skip Loading */
     $('.page-loading > span').on('click', function(){
@@ -196,7 +196,7 @@ $(document).on('ready',function(){
         e.preventDefault();
         $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
     });
-    
+
     $('.fav-job').on('click', function(){
         $(this).toggleClass('active');
     });
@@ -222,8 +222,8 @@ $(document).on('ready',function(){
     	$('.cand-extralink li').removeClass('active');
     	$(this).addClass('active');
     });
-    /*** FIXED Menu APPEARS ON SCROLL DOWN ***/	
-	$(window).on('scroll', function(){    
+    /*** FIXED Menu APPEARS ON SCROLL DOWN ***/
+	$(window).on('scroll', function(){
 		var scroll = $(window).scrollTop();
 		if (scroll >= 600) {
 		$(".cand-extralink").addClass("stick");
@@ -232,7 +232,7 @@ $(document).on('ready',function(){
 		$(".cand-extralink").removeClass("stick");
 		$(".cand-extralink").addClass("");
 		}
-	});	
+	});
 
 	$(".responsivemenu .menu-item-has-children > a").on("click",function(){
 	    $(this).parent().siblings().children("ul").slideUp();
@@ -268,3 +268,14 @@ $(window).on('load',function(){
     $('.page-loading').fadeOut();
 
 });
+
+function GetURLParameter(sParam){
+	var sPageURL = window.location.search.substring(1);
+	var sURLVariables = sPageURL.split('&');
+	for (var i = 0; i < sURLVariables.length; i++){
+		var sParameterName = sURLVariables[i].split('=');
+		if (sParameterName[0] == sParam){
+			return sParameterName[1];
+		}
+	}
+}
