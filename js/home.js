@@ -1,7 +1,7 @@
 function getTopJobOffers(keyword,city){
 	var urlPost = "http://18.221.163.161:8080/ws/getAllOffers",
 	str = {"filter_keyword":keyword,"filter_city":city};
-	var dataPost =$.param(str);
+	var dataPost = $.param(str);
 	$.ajax({
 			type: "POST",
 			url: urlPost,
@@ -27,6 +27,43 @@ function listJobs(data){
 			html += "</a>";
 		$(".job-listings-sec").append(html);
 	});
+}
+
+function user_registration_temp() {
+	var name = document.getElementById("name").value;
+	var surname = document.getElementById("surname").value;
+	var password = document.getElementById("password").value;
+	var gender = document.getElementById("gender").value;
+	var email = document.getElementById("email").value;
+	
+	if (name == "" || surname == "" || password == "" || gender == "" || email == "")
+		alert("Ningún campo puede estar vacio");
+	else {
+		var urlPost = "http://18.221.163.161:8080/ws/register_temp",
+		str = {"name":name,
+			"surname":surname,
+			"password":password,
+			"gender":gender,
+			"email":email};
+			
+		var dataPost =$.param(str);
+		$.ajax({
+				type: "POST",
+				url: urlPost,
+				data: dataPost,
+				contentType: "application/x-www-form-urlencoded",
+				dataType: "json",
+				success: function (data) {
+					if(data.message == "OK")
+						location.reload();
+					else
+						alert("Error al crear usuario: " + data.error);
+				},
+				failure: function (data) {
+					alert("Error al crear el usuario");
+				}
+		});
+	}
 }
 
 function search(){
